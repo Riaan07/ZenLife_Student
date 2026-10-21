@@ -60,6 +60,7 @@ class LogViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         isShowingDetails = false
         val overview: String
         val expanded: String
+
         when (log.type) {
             "WALKING" -> {
                 cardView.setCardBackgroundColor(Color.parseColor("#E3F2FD"))
