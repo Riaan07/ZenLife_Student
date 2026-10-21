@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- CRITICAL FIX: Changed layout_height from wrap_content to match_parent -->
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="8dp"
+    tools:context="com.csiq6823.zenlife.ui.DashboardFragment">
+
+    <!-- Top Horizontal Row: Button 1 (Walk) -->
+    <Button
+        android:id="@+id/btn_log_walk"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Walk"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btn_log_scroll"
+        android:layout_marginEnd="4dp"/>
+
+    <!-- Top Horizontal Row: Button 2 (Scroll) -->
+    <Button
+        android:id="@+id/btn_log_scroll"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Scroll"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btn_log_walk"
+        app:layout_constraintEnd_toStartOf="@+id/btn_fingerprint"
+        android:layout_marginHorizontal="4dp"/>
+
+    <!-- Top Horizontal Row: Button 3 (Custom ID) -->
+    <Button
+        android:id="@+id/btn_fingerprint"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="TRACK ID"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btn_log_scroll"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="4dp"/>
+
+    <!-- Middle Row: Set Break Alarm -->
+    <Button
+        android:id="@+id/btn_start_timer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="⚡ Set Break Alarm (10s)"
+        android:layout_marginTop="12dp"
+        app:layout_constraintTop_toBottomOf="@id/btn_log_walk"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- Bottom Section: Stored Logs History List -->
+    <!-- CRITICAL FIX: Changed layout_height from match_parent to 0dp -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:clipToPadding="false"
+        android:paddingTop="4dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintTop_toBottomOf="@id/btn_start_timer"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<androidx.constraintlayout.widget.ConstraintLayout-->
+<!--    xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="wrap_content"-->
+<!--    android:padding="8dp"-->
+<!--    tools:context="com.csiq6823.zenlife.ui.DashboardFragment">-->
+
+<!--    &lt;!&ndash; Top Horizontal Row: Button 1 (Walk) &ndash;&gt;-->
+<!--    <Button-->
+<!--        android:id="@+id/btn_log_walk"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Walk"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toStartOf="@+id/btn_log_scroll"-->
+<!--        android:layout_marginEnd="4dp"/>-->
+
+<!--    &lt;!&ndash; Top Horizontal Row: Button 2 (Scroll) &ndash;&gt;-->
+<!--    <Button-->
+<!--        android:id="@+id/btn_log_scroll"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Scroll"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/btn_log_walk"-->
+<!--        app:layout_constraintEnd_toStartOf="@+id/btn_fingerprint"-->
+<!--        android:layout_marginHorizontal="4dp"/>-->
+
+<!--    &lt;!&ndash; Top Horizontal Row: Button 3 (Custom ID) &ndash;&gt;-->
+<!--    <Button-->
+<!--        android:id="@+id/btn_fingerprint"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="TRACK ID"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/btn_log_scroll"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        android:layout_marginStart="4dp"/>-->
+
+<!--    &lt;!&ndash; Middle Row: Set Break Alarm &ndash;&gt;-->
+<!--    <Button-->
+<!--        android:id="@+id/btn_start_timer"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="⚡ Set Break Alarm (10s)"-->
+<!--        android:layout_marginTop="12dp"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/btn_log_walk"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"/>-->
+
+<!--    &lt;!&ndash; Bottom Section: Stored Logs History List &ndash;&gt;-->
+<!--    <androidx.recyclerview.widget.RecyclerView-->
+<!--        android:id="@+id/recycler_view"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:layout_marginTop="16dp"-->
+<!--        android:clipToPadding="false"-->
+<!--        android:paddingTop="8dp"-->
+<!--        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/btn_start_timer"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"/>-->
+
+<!--</androidx.constraintlayout.widget.ConstraintLayout>-->
