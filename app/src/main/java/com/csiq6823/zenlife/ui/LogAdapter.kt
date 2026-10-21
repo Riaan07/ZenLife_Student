@@ -18,16 +18,19 @@ class LogAdapter(private val logs: List<WellnessLog>) : RecyclerView.Adapter<Log
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LogViewHolder {
         // TODO: CHAPTER 9 & 10 - Inflate the list_item_log XML layout file securely using an explicit LayoutInflater.
         // Ensure you supply correct parameters to prevent runtime parent view pre-attachment errors.
-        val view = View(parent.context)
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.list_item_log, parent, false)
         return LogViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: LogViewHolder, position: Int) {
         // TODO: CHAPTER 10 & 11 - Calculate cumulative totals by processing a historic sublist snapshot
         // from the dataset list down to the current item row index position.
-        val runningWalkTotal = 0
-        val runningScrollTotal = 0
-        val runningHydrationCount = 0
+        val history = logs.subList(position, logs.size)
+        val runningWalkTotal = history.filter { it.type == "WALKING" }.sumOf { it.durationMinutes }
+        val runningScrollTotal = history.filter { it.type == "DOOM_SCROLLING" }.sumOf { it.durationMinutes }
+        val runningHydrationCount = history.filter { it.type == "HYDRATION" }.sumOf { it.durationMinutes }
+
 
         holder.bind(logs[position], runningWalkTotal, runningScrollTotal, runningHydrationCount)
     }
