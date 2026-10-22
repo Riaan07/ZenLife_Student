@@ -15,6 +15,7 @@ class ConfirmDeleteDialog : DialogFragment() {
     // TODO: CHAPTER 15 - Scope this viewmodel initialization to the lifecycle bounds
     // of the parent Host Activity container so that the dialog shares the active data state.
     // Replace this placeholder or initialize your ViewModel cleanly here.
+    private val viewModel: ZenLifeViewModel by viewModels({ requireActivity() })
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -22,12 +23,17 @@ class ConfirmDeleteDialog : DialogFragment() {
         savedInstanceState: Bundle?
     ): View? {
         // TODO: CHAPTER 15 - Inflate the custom 'dialog_confirm_delete' layout sheet layout hierarchy.
-        val view = View(context)
+        val view = inflater.inflate(R.layout.dialog_confirm_delete, container, false)
 
         // TODO: CHAPTER 15 - Wire click triggers to cancel button components to dismiss the modal cleanly.
-
+        view.findViewById<Button>(R.id.btn_cancel_delete).setOnClickListener { dismiss() }
         // TODO: CHAPTER 15 - Wire click triggers to the confirm deletion button widget.
         // It must safely invoke viewmodel.clearLogs() and then hide the overlay using dismiss().
+        view.findViewById<Button>(R.id.btn_confirm_delete).setOnClickListener {
+            viewModel.clearLogs()
+            dismiss()
+        }
+        return view
 
         return view
     }
