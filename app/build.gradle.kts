@@ -25,18 +25,18 @@ android {
         release {
             isMinifyEnabled = false
         }
-    }
+    }git
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
 }
 
-kotlin {
-    compilerOptions {
-        jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_11)
-    }
+plugins {
+    id("com.android.application")
+    kotlin("android") //  RIGHT: Must be at the very top inside plugins
 }
+
 
 dependencies {
     implementation(libs.androidx.activity.ktx)
@@ -59,3 +59,4 @@ dependencies {
     implementation("androidx.room:room-ktx:2.8.4")
     ksp("androidx.room:room-compiler:2.8.4")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1")
+    }
